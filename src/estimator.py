@@ -17,8 +17,10 @@ def estimator(data):
     infections_by_requested_time = currently_infected * 2 ** power_factor
     severe_infections_by_requested_time = severe_currently_infected * 2 ** power_factor
 
-    severe_cases_by_requested_time = infections_by_requested_time * 0.15
-    severe_severe_cases_by_requested_time = severe_infections_by_requested_time * 0.15
+    severe_cases_by_requested_time = math.trunc(
+        infections_by_requested_time * 0.15)
+    severe_severe_cases_by_requested_time = math.trunc(
+        severe_infections_by_requested_time * 0.15)
     total_hospital_beds = data['totalHospitalBeds']
     number_of_available_beds = math.trunc(
         total_hospital_beds * 0.35) - severe_cases_by_requested_time
