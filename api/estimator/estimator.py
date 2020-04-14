@@ -32,10 +32,10 @@ def estimator(data):
 
     average_daily_income_population = data['region']['avgDailyIncomePopulation']
     average_daily_income_in_usd = data['region']['avgDailyIncomeInUSD']
-    dollars_in_flight = infections_by_requested_time * average_daily_income_population * \
-        average_daily_income_in_usd * time_to_elapse
-    severe_dollars_in_flight = severe_infections_by_requested_time * average_daily_income_population * \
-        average_daily_income_in_usd * time_to_elapse
+    dollars_in_flight = (infections_by_requested_time * average_daily_income_population *
+                         average_daily_income_in_usd) / time_to_elapse
+    severe_dollars_in_flight = (severe_infections_by_requested_time * average_daily_income_population *
+                                average_daily_income_in_usd) / time_to_elapse
 
     return {
         "data": data,
